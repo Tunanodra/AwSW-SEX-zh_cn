@@ -1,3 +1,6 @@
+本人对该mod进行了汉化, 汉化内容并不一定是准确的, 请仔细甄别
+此外mod的汉化完整度并不是100%
+
 An Angels with Scaly Wings lewd mod. Contributions welcome.
 
 ### USERS DOWNLOAD [HERE: https://github.com/4onenm/AwSW-Bangok/archive/refs/heads/main.zip](https://github.com/4onenm/AwSW-Bangok/archive/refs/heads/main.zip)
