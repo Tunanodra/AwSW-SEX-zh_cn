@@ -224,6 +224,7 @@ label bangok_four_annaxdamion:
         queue sound "fx/silence.ogg"
         queue sound "fx/silence.ogg"
         queue sound "fx/silence.ogg"
+        queue sound "fx/silence.ogg"
         queue sound "fx/knocking1.ogg"
         m "等了一会儿，确保她走了之后，我走到实验室门口敲了敲门。"
         c "(安娜可能会忙一阵子。也许我可以问问这个达米恩关于雷扎的事...)"

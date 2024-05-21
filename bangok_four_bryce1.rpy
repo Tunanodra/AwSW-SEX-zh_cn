@@ -1,3 +1,8 @@
+# Flags used:
+#  persistent.bangok_inflation - Inflation
+#  persistent.bangok_knot - Knotting
+#  persistent.bangok_watersports - Watersports
+
 init python:
     bangok_four_bryce1_unplayed = True
     bangok_four_bryce1_protected = False
@@ -29,6 +34,8 @@ label bangok_four_bryce1_skipmenu:
         "不。不想那么过分。":
             pass
     jump bangok_four_bryce1_skipmenu_return
+
+
 
 label bangok_four_bryce1_ws_conversation:
     Br stern dk "嗯。"
@@ -72,6 +79,7 @@ label bangok_four_bryce1_ws_conversation:
                     $ bangok_four_bryce1_wstiming = "after"
             Br flirty dk "你知道的。"
     return
+
 
 label bangok_four_bryce1_ws_emptying_the_tank(feelbad=False, condom=False):
     hide bryce with dissolve
@@ -152,6 +160,7 @@ label bangok_four_bryce1_setprotected(p):
         else:
             renpy.error("在你知道正在进行什么性行为之前，不应该戴上避孕套。")
     return
+
 
 label bangok_four_bryce1_poke:
     m "在入睡时，布莱斯部分侧身趴下，让我比以前看得更清楚。"
@@ -280,6 +289,12 @@ label bangok_four_bryce1_poke:
                         c "我们还是先送你回家，布莱斯。"
                         Br laugh "好吧！"
                         jump bangok_four_bryce1_nevermind
+
+
+
+
+
+
 
 label bangok_four_bryce1_apartment:
     scene black with dissolvemed
@@ -430,6 +445,7 @@ label bangok_four_bryce1_f_tonguefuck:
                         show bryce normal dk at Position(xpos=0.4, xanchor='center') with dissolve
                         show bryce at Position(xpos=0.45, xanchor='center', ypos=1.05) with ease
                         m "布莱斯躺回沙发，尾巴勾住地毯和茶几，一条后腿伸展，给我提供了方便接触他的阴茎的机会。"
+                        
                         Br smirk dk "好吧。我有避孕套。在那边。最上面的抽屉。"
                         jump bangok_four_bryce1_oralbot_getprotection
             "[[享受。]]":
@@ -553,6 +569,13 @@ label bangok_four_bryce1_f_tonguefuck:
             c "我不觉得我有那么强。"
             Br stern dk "我也不认为。但如果我没预料到，我还是会有反应。"
             m "布莱斯在我腿间重新找位置，几乎立刻把我带回到脸靠近他脸的状态。他的舌头在我下体来回舔着，玩弄我的阴蒂。"
+                        show bryce at Position(ypos=1.5) with ease
+            show bryce laugh dk with dissolve
+
+            if persistent.bangok_watersports == True and bangok_four_bryce1_wstiming is not None:
+                m "He found my urethra again easily. The feeling of him sliding in a second time, un-pissing through my already stretched urethra, pushed me right back to where I had been and even a moment closer."
+            else:
+                m "His tongue slithered inside me again. It snaked around, sampling my arousal from my walls, but it wasn't as deep as it had been -- it wasn't at my womb's gate, like no human tongue ever could be."
             menu:
                 "我能抓住你的...":
                     $ brycemood += 1
@@ -680,7 +703,7 @@ label bangok_four_bryce1_f_fuck:
         "[[分开双腿。]]":
             call bangok_four_bryce1_setprotected(False) from bangok_four_bryce1_f_fuck_noprotection
     show bangok_four_bryce_underside_large at Position(yanchor='top',ypos=-0.6) with ease
-    m "布莱斯站在我上方，再次朝我眨了眨眼，我把一条腿扔到沙发背上，另一条腿落在前面，试图为他腾出足够的空间。"
+    m "布莱斯站在我上方，再次朝我眨了眨眼，我把一条腿甩到沙发背上，另一条腿落在前面，试图为他腾出足够的空间。"
     Br "给我点时间，找准目标。"
     show bangok_four_bryce_underside_large at Position(yanchor='top',ypos=-1.5) with ease
     m "布莱斯爬上我，后腿仍在地上，前腿撑在沙发上。他的下腹传来的热量覆盖了我的裸露皮肤。"
@@ -906,6 +929,7 @@ label bangok_four_bryce1_f_fuck_postwomb:
                         c "我们先确保我能应付。"
                         Br normal dk "好。我想我能忍住。"
 
+
     if persistent.bangok_balls == True:
         m "他坐在那里很长一段时间，完全插入我体内，我的身体在他身下抽搐，我的下体每次抽搐都伴随着他的重球碰撞。"
     else:
@@ -1003,7 +1027,7 @@ label bangok_four_bryce1_f_fuck_postwomb:
         Br stern dk "不久了..."
     stop soundloop fadeout 1.0
     play sound "fx/snarl.ogg"
-    if bangok_four_bryce1.knotpos == "in" 或 (bangok_four_bryce1.knotpos is None 且 bangok_four_bryce1.fuckwomb == True):
+    if bangok_four_bryce1.knotpos == "in" 或 (bangok_four_bryce1.knotpos is None and bangok_four_bryce1.fuckwomb == True):
         show bangok_four_bryce_underside_large at Position(yanchor='top',ypos=-2.15) with ease
         if bangok_four_bryce1.fuckwomb == False:
             m "我大声尖叫，猛然向后抽身，当布莱斯咆哮着穿透我的子宫，直接射到了我的子宫里。"
@@ -1038,7 +1062,7 @@ label bangok_four_bryce1_f_fuck_postwomb:
     if persistent.bangok_inflation == True:
         m "布莱斯没有减速，他的阴茎继续抽搐，源源不断地射出精液。"
         if bangok_four_bryce1_protected == True:
-            if persistent.bangok_watersports == True 且 bangok_four_bryce1_wstiming == "before":
+            if persistent.bangok_watersports == True and bangok_four_bryce1_wstiming == "before":
                 m "避孕套的储液囊在我子宫内膨胀，压迫着我所有的内在空间，精液和尿液寻找空间填满我。"
             else:
                 if persistent.bangok_cervpen:
@@ -1047,19 +1071,19 @@ label bangok_four_bryce1_f_fuck_postwomb:
                     m "避孕套的储液囊在我的阴道内膨胀，压迫着我所有的内在空间，精液寻找空间填满我。"
         else:
             $ bangok_four_bryce1_playerstuffed = True
-            if persistent.bangok_watersports == True 且 bangok_four_bryce1_wstiming == "before":
+            if persistent.bangok_watersports == True and bangok_four_bryce1_wstiming == "before":
                 m "精液和尿液充满了我的子宫，把我的圣殿充满了他的液体。"
             else:
                 m "精液充满了我的子宫，把我的圣殿充满了他的种子。"
 
-        if bangok_four_bryce1.knotpos == "in" 且 bangok_four_bryce1.fuckwomb == False:
+        if bangok_four_bryce1.knotpos == "in" and bangok_four_bryce1.fuckwomb == False:
             c "布莱斯！求你！"
         else:
             c "布莱斯！"
         Br flirty dk "差不多..."
         m "看向下方，我发现自己的肚子几乎看起来像怀孕了一样，膨胀着龙的阴茎和液体。"
 
-        if bangok_four_bryce1_protected == True 且 persistent.bangok_watersports == True 且 bangok_four_bryce1_wstiming == "before":
+        if bangok_four_bryce1_protected == True and persistent.bangok_watersports == True and bangok_four_bryce1_wstiming == "before":
             play sound "fx/bubbles.ogg"
             c "啊！"
             m "避孕套破裂了，精液和尿液立即充满了我的管道，浸透了我的子宫，将我的圣殿充满了布莱斯的液体。"
@@ -1068,7 +1092,7 @@ label bangok_four_bryce1_f_fuck_postwomb:
 
     $ renpy.pause(0.8)
 
-    if bangok_four_bryce1.knotpos != "in" 或 (bangok_four_bryce1.fuckwomb == True):
+    if bangok_four_bryce1.knotpos != "in" or bangok_four_bryce1.fuckwomb == True:
         show bangok_four_bryce_underside_large:
             ease 1.0 ypos -2.0
             ease 1.0 ypos -1.7
@@ -1082,7 +1106,7 @@ label bangok_four_bryce1_f_fuck_postwomb:
     $ bangok_four_bryce1_brycecame = True
 
 
-    if bangok_four_bryce1.knotpos == "in" 且 bangok_four_bryce1.fuckwomb == False:
+    if bangok_four_bryce1.knotpos == "in" and bangok_four_bryce1.fuckwomb == False:
         m "他的表情立刻变得严肃。"
         $ brycemood -= 3
         Br brow dk "怎么了？"
@@ -1162,7 +1186,7 @@ label bangok_four_bryce1_f_fuck_postwomb:
                         jump bangok_four_bryce1_f_fuck_badknot_piss
         jump bangok_four_bryce1_tiedsleep
 
-    if persistent.bangok_watersports == True 且 bangok_four_bryce1_wstiming == "after":
+    if persistent.bangok_watersports == True and bangok_four_bryce1_wstiming == "after":
         Br flirty dk "准备好第二部分了吗？"
         if persistent.bangok_inflation == True:
             c "呃。"
@@ -1173,7 +1197,7 @@ label bangok_four_bryce1_f_fuck_postwomb:
         play soundloop "fx/faucet1.ogg" fadein 1.0
         queue soundloop "fx/faucet2.ogg"
         Br laugh dk "啊..."
-        if persistent.bangok_inflation == True 且 bangok_four_bryce1_protected == True:
+        if persistent.bangok_inflation == True and bangok_four_bryce1_protected == True:
             play sound "fx/bubbles.ogg"
             c "啊！"
             m "避孕套破裂，布莱斯更多的尿液让它无法承受。我几乎看起来像怀孕了一样，肚子因为液体和肉体而膨胀。"
@@ -1215,7 +1239,7 @@ label bangok_four_bryce1_f_fuck_postwomb:
         Br flirty dk "好了吗？"
         m "我点了点头。"
 
-    if persistent.bangok_knot == True 且 bangok_four_bryce1.knotpos == "in":
+    if persistent.bangok_knot == True and bangok_four_bryce1.knotpos == "in":
         Br flirty dk "希望你喜欢，因为我不认为你的阴道会再让结出来。"
         jump bangok_four_bryce1_tiedsleep
     else:
@@ -1228,7 +1252,7 @@ label bangok_four_bryce1_f_fuck_postwomb:
                     $ brycemood += 1
                     scene black with dissolveslow
                     m "布莱斯瘫倒在沙发上，小心地把我移到边缘，以免压坏我。"
-                    if bangok_four_bryce1_protected == False 或 (persistent.bangok_watersports 和 persistent.bangok_inflation):
+                    if bangok_four_bryce1_protected == False or (persistent.bangok_watersports and persistent.bangok_inflation):
                         m "他也调整了臀部，把阴茎头顶在子宫口，以防泄漏。"
                     Br smirk dk "晚安，[player_name]。"
                     jump bangok_four_bryce1_morningcouch
@@ -1237,26 +1261,29 @@ label bangok_four_bryce1_f_fuck_postwomb:
                     scene bangok_four_bryce1_apartment night at Pan((0,360), (0,360), 0.0)
                     show bryce stern dk
                     with dissolvemed
-                    if (persistent.bangok_watersports 和 persistent.bangok_inflation 和 bangok_four_bryce1_protected) 或没有使用避孕套:
+                    if (persistent.bangok_watersports and persistent.bangok_inflation and bangok_four_bryce1_protected) or not bangok_four_bryce1_protected:
                         # 破了的避孕套或没有避孕套
                         play sound ["fx/slide.ogg","fx/spray.ogg"] fadein 0.5
                         m "布莱斯的阴茎从我体内抽出，边缘滴着我们的液体。"
+                        # TODO?: Cunnilingus?
                     elif persistent.bangok_inflation:
                         # 满的避孕套
                         play sound "fx/slide.ogg" fadein 0.5
-                        m "布莱斯用力拉，但无法把充满液体的避孕套拉出我的子宫。"
-                        Br stern dk "见鬼。我的尺寸问题。"
-                        c "也许我应该推一下？"
-                        Br brow dk "先让我把避孕套的一些部分拿出来。"
+                        m "Bryce tugged, but couldn't drag the condom's inflated reservoir past my cervix."
+                        Br stern dk "Damn. I'm not sure we can get that out without breaking it."
+                        c "Hold on, just..."
+                        m "I wrapped my arms around his broad shoulders."
+                        c "Now lean back? Maybe with the back of the couch?"
                         play sound "fx/pour.ogg"
                         $ renpy.pause(3.0)
                         m "我感受到液体从我的子宫流入避孕套，布莱斯继续拉出来，就像拔软木塞一样。"
+                        c "推."
                         play sound "fx/uncork.ogg"
                         m "最后一点液体的释放带来的感觉足以震颤我的身体。"
                     else:
                         # 正常使用的避孕套
                         play sound ["fx/slide.ogg","fx/uncork.ogg"] fadein 0.5
-                        if persistent.bangok_watersports 和 bangok_four_bryce1_wstiming 不是 None:
+                        if persistent.bangok_watersports and bangok_four_bryce1_wstiming is not None:
                             m "布莱斯把自己拉出来，避孕套里他的精液和尿液在子宫颈处爆发，带来震颤的快感。"
                         else:
                             if persistent.bangok_cervpen:
@@ -1279,6 +1306,22 @@ label bangok_four_bryce1_f_fuck_postwomb:
             Br "晚安，[player_name]。"
             c "晚安。"
             jump bangok_four_bryce1_morningcouch
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 label bangok_four_bryce1_m:
@@ -1518,7 +1561,8 @@ label bangok_four_bryce1_m2:
                                         m "我玩弄着口中膨胀的尿液气球，直到感觉安全为止，{w=0.5}{nw}"
                                         stop soundloop fadeout 6.0
                                         play sound "fx/water1.ogg"
-                                        m "我玩弄着口中膨胀的尿液气球，直到感觉安全为止，{fast}然后让它在 Bryce 小便结束时，以淫荡的拍击声从我的嘴里掉到沙发的一侧Br flirty dk flip "有点太多了？"
+                                        m "我玩弄着口中膨胀的尿液气球，直到感觉安全为止，{fast}然后让它在 Bryce 小便结束时，以淫荡的拍击声从我的嘴里掉到沙发的一侧"
+                                        Br flirty dk flip "有点太多了？"
                                         c "是的。但我有点预料到了。你比我大很多。"
                                 Br smirk dk flip "我们可能需要一个新的避孕套。"
                                 menu:
@@ -1733,7 +1777,7 @@ label bangok_four_bryce1_m2:
                     "我...我想我完成了。":
                         Br brow dk "嗯？"
                         c "我...差不多满足了。我想我快要昏过去了。"
-                        Br flirty dk "你确定
+                        Br flirty dk "你确定"
                 c "差不多是这样。"
                         $ brycemood -= 1
                         Br normal dk "如果你这么说。"
@@ -2115,6 +2159,7 @@ label bangok_four_bryce1_m2:
                 if not bangok_four_bryce1_playercame:
                     m "他阴茎的抽搐顶在我内部的愉快按钮上。在我能形成清晰的语言之前，我也达到了高潮，射在我们两个的胸膛上。"
                 else:
+                    if bangok_four_playerhasdick == True:
                     m "他阴茎的抽搐顶在我内部的愉快按钮上，最近的高潮后过度刺激让我扭动不已。"
             else:
                 if not bangok_four_bryce1_playercame:
@@ -2244,6 +2289,7 @@ label bangok_four_bryce1_m2:
                     else:
                         c "那对你来说很容易说，没有一整个屁股被龙的阴茎和精液塞满。"
 
+
             
                 label bangok_four_bryce1_tiedsleep:
                 scene black with dissolveslow
@@ -2319,6 +2365,15 @@ label bangok_four_bryce1_m2:
                         c "晚安。"
                         jump bangok_four_bryce1_morningcouch
 
+
+
+
+
+
+
+
+
+
         "我想插你。":
             $ bangok_four_malepartners += 1
             label bangok_four_bryce1_ptop:
@@ -2356,7 +2411,7 @@ label bangok_four_bryce1_m2:
                         $ brycemood -= 1
                         show bryce stern dk with dissolve
                         m "Bryce 哼了一声，然后指了指角落里的一个抽屉柜。"
-                        Br "顶层。我想。快点。"
+                        Br "上面。我想。快点。"
                         $ bangok_four_bryce1_protected = True
                         play sound "fx/rummage.wav"
                         m "有几个不同品牌，上面有与Bryce比例相符的“实际尺寸”标记。只有在挖到最底层时，才终于找到一个更接近我尺寸的未开封的避孕套。"

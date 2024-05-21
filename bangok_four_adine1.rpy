@@ -588,4 +588,7 @@ label .best_ending:
     m "在和我互道再见后，她走出了大门，留下我没有龙来满足我的欲望。"
     $ renpy.pause(1.0)
     $ persistent.adine1skip = True
-    $ persistent
+    $ persistent.headgear = headgear
+        $ adinestatus = "good"
+        $ adinescenesfinished = 1
+        jump _mod_fixjmp
